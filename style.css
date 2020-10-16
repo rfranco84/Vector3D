@@ -1,22 +1,3 @@
 * {
 	font-family: Lucida, Lucida Grande, Helvetica, Times;
 }
-
-#contents {
-
-	display: flex;
-	flex-direction: row;
-
-}
-
-#navbar {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-}
-
-#article {
-	display: flex;
-	flex-direction: column;
-	padding-left: 25%;
-}
