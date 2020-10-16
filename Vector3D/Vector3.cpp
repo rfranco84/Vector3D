@@ -1,5 +1,11 @@
 #include "Vector3.h"
 
+    const Vector3 Vector3::zero = Vector3::Vector3();
+
+	Vector3::Vector3() {
+		Vector3(0, 0, 0);
+	}
+
 	Vector3::Vector3(double x, double y, double z) {
 		this->x = x;
 		this->y = y;
@@ -7,24 +13,25 @@
 		updateMagnitude();
 	}
 
+
 	// Getter and Setter functions
-	double Vector3::getX() {
+	double Vector3::getX() const{
 		return x;
 	}
 
-	double Vector3::getY() {
+	double Vector3::getY() const{
 		return y;
 	}
 
-	double Vector3::getZ() {
+	double Vector3::getZ() const{
 		return z;
 	}
 
-	double Vector3::getMagnitude() {
+	double Vector3::getMagnitude() const{
 		return magnitude;
 	}
 
-	double Vector3::getSqrdMagnitude() {
+	double Vector3::getSqrdMagnitude() const{
 		return sqrMagnitude;
 	}
 
@@ -63,11 +70,6 @@
 		return sqrt(pow(u.getX() - v.getX(), 2) + pow(u.getY() - v.getY(), 2) + pow(u.getZ() - v.getZ(), 2));
 	}
 
-	// Returns the Zero Vector
-	Vector3 Vector3::zeroVector() {
-		return Vector3(0, 0, 0);
-	}
-
 	// Returns the Vector multiplied by the scalar number
 	Vector3 Vector3::scalarProduct(Vector3 u, double k) {
 		return Vector3(k * u.getX(), k * u.getY(), k * u.getZ());
@@ -94,7 +96,7 @@
 		this->magnitude = sqrt(this->sqrMagnitude);
 	}
 
-	string Vector3::ToString() {
+	string Vector3::ToString() const{
 		
 		return "["+ to_string(x) + ", " + to_string(y) +", "+to_string(z)+"]";
 	}
