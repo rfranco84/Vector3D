@@ -18,7 +18,7 @@ int main()
     Vector3 u(1, 0, 0);
 
     Vector3 w = v - u;
-    cout << w.ToString();
+    cout << w.getMagnitude();
     
 
     cout << Vector3::zero.getMagnitude();

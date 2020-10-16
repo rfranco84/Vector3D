@@ -1,11 +1,14 @@
 #include "Vector3.h"
 
+	// Zero vector is a static constant.
     const Vector3 Vector3::zero = Vector3::Vector3();
 
+	// Default constructor initializes a Vector3 object to 0.
 	Vector3::Vector3() {
 		Vector3(0, 0, 0);
 	}
 
+	// Constructor takes in x, y, z cartesian coordinates to represent a Vector3 object
 	Vector3::Vector3(double x, double y, double z) {
 		this->x = x;
 		this->y = y;
@@ -14,7 +17,7 @@
 	}
 
 
-	// Getter and Setter functions
+	// Getter and Setter functions. 'zero' only has access to the Getter functions so as to prevent modification of the zero-vector.
 	double Vector3::getX() const{
 		return x;
 	}
@@ -74,7 +77,8 @@
 	Vector3 Vector3::scalarProduct(Vector3 u, double k) {
 		return Vector3(k * u.getX(), k * u.getY(), k * u.getZ());
 	}
-
+	
+	// Compare object to another Vector3 object u. Returns true if they are the equal in values.
 	bool Vector3::Equals(Vector3 u){
 		if (x == u.getX() && y == u.getY() && z == getZ())
 		{
@@ -83,6 +87,7 @@
 		return false;
 	}
 
+	// Makes the vector a normal vector (magnitude 1 with the same direction).
 	void Vector3::normalize(Vector3 u) {
 		u.setX(u.getX() / magnitude);
 		u.setY(u.getY() / magnitude);
@@ -91,20 +96,32 @@
 		sqrMagnitude = 1;
 	}
 
+	// Updates magnitude property upon vector manipulation. Only called within the Vector3 class. 
 	void Vector3::updateMagnitude() {
 		this->sqrMagnitude = x * x + y * y + z * z;
 		this->magnitude = sqrt(this->sqrMagnitude);
 	}
 
+	// Returns a nicely formatted 3D vector in string form "[x, y, z]"
 	string Vector3::ToString() const{
 		
 		return "["+ to_string(x) + ", " + to_string(y) +", "+to_string(z)+"]";
 	}
 
+
+	void Vector3::Set(Vector3 u) {
+		this->x = u.getX();
+		this->y = u.getY();
+		this->z = u.getZ();
+		updateMagnitude();
+	}
+
+	// Overloads the '+' operator to enable vector addition.
 	Vector3 Vector3::operator + (Vector3 const &v) {
 		return Vector3(x + v.x, y+v.y, z+v.z);
 	}
 
+	// Overloads the '-' operator to enable vector subtraction.
 	Vector3 Vector3::operator - (Vector3 const& v) {
 		return Vector3(x - v.x, y - v.y, z - v.z);
 	}
